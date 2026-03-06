@@ -1,0 +1,5 @@
+{
+  "name": "Chinese Chess AI (Xiangqi)",
+  "description": "A full-featured Chinese Chess game with 5 levels of AI difficulty, check prediction, and thinking simulation.",
+  "requestFramePermissions": []
+}
