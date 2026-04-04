@@ -239,22 +239,37 @@ export default function App() {
       </div>
 
       {/* Main Content Container */}
-      <div className="relative z-10 w-full max-w-[500px] h-full flex flex-col justify-between py-6 px-4">
+      <div className="relative z-10 w-full max-w-[600px] h-full flex flex-col py-6 px-4">
          
-         {/* Top: Opponent (AI) */}
-         <div className="mb-4">
-            <PlayerCard 
-                name="李老师" 
-                avatar="https://api.dicebear.com/7.x/avataaars/svg?seed=TeacherLi" 
-                timer={blackTimer} 
-                isActive={turn === 'black'} 
-                capturedPieces={capturedRed} 
-                playerColor="black"
-                isAi={true}
-                rank={LEVEL_NAMES[aiLevel]}
-                onRankClick={() => setShowRules(true)}
-                isThinking={isAiThinking}
-            />
+         {/* Top: Players Area (Side by side) */}
+         <div className="flex flex-row gap-2 mb-6">
+            <div className="flex-1">
+                <PlayerCard 
+                    name="李老师" 
+                    avatar="https://api.dicebear.com/7.x/avataaars/svg?seed=TeacherLi" 
+                    timer={blackTimer} 
+                    isActive={turn === 'black'} 
+                    capturedPieces={capturedRed} 
+                    playerColor="black"
+                    isAi={true}
+                    rank={LEVEL_NAMES[aiLevel]}
+                    onRankClick={() => setShowRules(true)}
+                    isThinking={isAiThinking}
+                />
+            </div>
+            <div className="flex-1">
+                <PlayerCard 
+                    name="我" 
+                    avatar="https://api.dicebear.com/7.x/avataaars/svg?seed=Player" 
+                    timer={redTimer} 
+                    isActive={turn === 'red'} 
+                    capturedPieces={capturedBlack} 
+                    playerColor="red"
+                    showControls={true}
+                    onUndo={handleUndo}
+                    onHint={handleHint}
+                />
+            </div>
          </div>
 
          {/* Middle: Board */}
@@ -265,21 +280,6 @@ export default function App() {
                 selectedPos={selectedPos}
                 validMoves={validMoves.map(m => m.to)}
                 lastMove={lastMove}
-            />
-         </div>
-
-         {/* Bottom: Player (You) */}
-         <div className="mt-4">
-            <PlayerCard 
-                name="我" 
-                avatar="https://api.dicebear.com/7.x/avataaars/svg?seed=Player" 
-                timer={redTimer} 
-                isActive={turn === 'red'} 
-                capturedPieces={capturedBlack} 
-                playerColor="red"
-                showControls={true}
-                onUndo={handleUndo}
-                onHint={handleHint}
             />
          </div>
 
